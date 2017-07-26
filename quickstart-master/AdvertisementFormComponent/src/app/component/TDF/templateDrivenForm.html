@@ -1,0 +1,45 @@
+<form #productForm="ngForm" (ngSubmit)="onSubmit(productForm.value)" novalidate>
+<div class="container" style="margin-top:20px">
+<div class="form-group">
+
+        <label>Name</label>    
+            <input type="text" name="name" required minlength="3" class="form-control" #nameRef #nameModelRef="ngModel" ngModel>
+            <div *ngIf="nameModelRef.errors && nameModelRef.touched" class="alert alert-danger">
+                <div [hidden]="!nameModelRef.errors.required" >Please enter your Name</div>
+                <div [hidden]="!nameModelRef.errors.minlength"> Name length should be minimum 3 characters </div>
+            </div>
+
+</div>
+
+<div class="form-group">
+
+            <label>Category</label>
+                <select  #category class="form-control">
+                <option *ngFor="let option of options" [value]="option.value">{{option.name}}</option>
+                </select>
+
+</div>
+
+<div class="form-group">
+
+            <label>Price</label>
+            <input #price type="text" name="price" required class="form-control"  placeholder=Price #priceModelRef="ngModel" ngModel>
+            <div *ngIf="priceModelRef.errors && priceModelRef.touched" class="alert alert-danger">
+                <div [hidden]="!priceModelRef.errors.required" >Please enter Price</div>
+            </div>
+
+</div>
+            
+<div class="form-group">
+
+            <label>Description</label>
+            <input #desc type="text" name="desc" required class="form-control"  placeholder=Desciption.. #descModelRef="ngModel" ngModel>
+            <div *ngIf="descModelRef.errors && descModelRef.touched" class="alert alert-danger">
+                <div [hidden]="!descModelRef.errors.required" >Please enter Description</div>
+            </div>
+ </div>
+           
+<button  [disabled]="!productForm.form.valid" type="Submit" class="btn btn-primary" (click)="addProduct(name.value,category.value,price.value,desc.value)">ADD PRODUCT</button>
+<hr>
+</div>
+</form>

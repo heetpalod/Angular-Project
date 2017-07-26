@@ -1,0 +1,36 @@
+   .bs-example{
+    	margin-left: 100px;
+    	margin-right: 200px;
+    	margin-top: 40px;
+    }
+    
+	/* Fix alignment issue of label on extra small devices in Bootstrap 3.2 */
+    .form-horizontal .control-label{
+        padding-top: 7px;}
+
+        button {
+    background-color: #888888;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 8px 8px 8px;
+    border: none;
+    cursor: pointer;
+    width: 85%;
+}
+
+.h1, h1 {
+    font-size: 36px;
+    margin-right: 100px;
+}
+
+.close {
+    float: right;
+    font-size: 21px;
+    font-weight: 700;
+    line-height: 1;
+    color: #000;
+    text-shadow: 0 1px 0 #fff;
+    filter: alpha(opacity=20);
+    opacity: .2;
+    margin-right: 100px;
+}

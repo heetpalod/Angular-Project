@@ -1,0 +1,56 @@
+
+    <div class="container">
+    <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
+       
+       <label><b>First Name: </b></label>
+       <input type="text" placeholder="Enter First Name" name="firstname" class="form-control" required minlength="3" #firstnameModelRef="ngModel" ngModel><br>
+            <div *ngIf="firstnameModelRef.errors && firstnameModelRef.touched" class="alert alert-danger">
+                <div [hidden]="!firstnameModelRef.errors.required" >Please enter First Name </div>
+                <div [hidden]="!firstnameModelRef.errors.minlength">First Name length should be minimum 3 
+                characters </div>
+            </div>
+
+       <label><b>Last Name: </b></label>
+       <input type="text" placeholder="Enter Last Name" name="lastname" class="form-control" required minlength="3" #lastnameModelRef="ngModel" ngModel><br>
+            <div *ngIf="lastnameModelRef.errors && lastnameModelRef.touched" class="alert alert-danger">
+                <div [hidden]="!lastnameModelRef.errors.required" >Please enter Last Name </div>
+                <div [hidden]="!lastnameModelRef.errors.minlength">Last Name length should be minimum 3 
+                characters </div>
+            </div>
+
+       <label><b>Username:  </b></label>
+       <input type="text" placeholder="Enter Username" name="username" class="form-control" required minlength="3" #usernameModelRef="ngModel" ngModel><br>
+            <div *ngIf="usernameModelRef.errors && usernameModelRef.touched" class="alert alert-danger">
+                <div [hidden]="!usernameModelRef.errors.required" >Please enter Username </div>
+                <div [hidden]="!usernameModelRef.errors.minlength">Last Name length should be minimum 3 
+                characters </div>
+            </div>
+
+       <label><b>Password: </b></label>
+       <input type="password" placeholder="Enter Password" name="password" class="form-control" required minlength="3" #passwordModelRef="ngModel" ngModel style="margin:0"><br>
+            <div *ngIf="passwordModelRef.errors && passwordModelRef.touched" class="alert alert-danger">
+                <div [hidden]="!passwordModelRef.errors.required" >Please enter Password </div>
+                <div [hidden]="!passwordModelRef.errors.minlength">Password length should be minimum 3 
+                characters </div>
+            </div>
+
+       <label><b>User Email: </b></label>
+       <input type="text" placeholder="Enter User Email" name="email"  class="form-control" required #emailModelRef="ngModel" ngModel><br>
+            <div *ngIf="emailModelRef.errors && emailModelRef.touched" class="alert alert-danger">
+                <div [hidden]="!emailModelRef.errors.required" >Please enter User Email </div>
+            </div>
+
+       <label><b>Mobile No: </b></label>
+       <input type="text" placeholder="Enter Mobile No" name="mobileno" class="form-control" required maxlength="10" #mobilenoModelRef="ngModel" ngModel><br>
+            <div *ngIf="mobilenoModelRef.errors && mobilenoModelRef.touched" class="alert alert-danger">
+                <div [hidden]="!mobilenoModelRef.errors.required" >Please enter Mobile No. </div>
+                <div [hidden]="!mobilenoModelRef.errors.maxlength">Mobile No. should be maximum 10 
+                characters </div>
+            </div>
+      
+       <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
+
+        <div class="clearfix">
+            <button type="submit" class="signupbtn">Sign Up</button>
+        </div>
+        </div>

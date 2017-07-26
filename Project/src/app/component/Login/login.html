@@ -1,0 +1,34 @@
+
+    <div class="imgcontainer">
+      <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+      <a> 
+      <img src="./img/user.jpg" alt="Avatar" class="avatar" height="100" width="100">
+      </a>
+    </div>
+
+    
+    <div class="container">
+      <label><b>Username: </b></label>
+      <input type="text" name="usernamelogin" required minlength="3" maxlength="15" class="form-control" placeholder="Username" #usernameloginModelRef="ngModel" ngModel><br>
+          <div *ngIf="usernameloginModelRef.errors && usernameloginModelRef.touched" class="alert alert-danger">
+                <div [hidden]="!usernameloginModelRef.errors.required" >Please enter Username </div>
+                <div [hidden]="!usernameloginModelRef.errors.minlength"> Username length should be minimum 3 
+                characters </div>
+                <div [hidden]="!usernameloginModelRef.errors.maxlength"> Username length should be maximum 15
+                    characters </div>
+          </div>
+      <label><b>Password: </b></label>
+      <input type="password" name="password" required placeholder="Enter Password" class="form-control"  required #passwordModelRef="ngModel" ngModel><br>
+                  <div *ngIf="passwordModelRef.errors && usernameModelRef.touched" class="alert alert-danger">
+                    <div [hidden]="!passwordModelRef.errors.required" >Please enter Password </div>
+                  </div>
+
+      <button type="submit" [disabled]="!loginForm.valid">Login</button><br>
+
+      <input type="checkbox" checked="checked" style="margin-left: 80px;"> Remember me
+    </div>
+
+    <div style="background-color:#f1f1f1">
+      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+      <span class="psw"><a href="#">Forgot password?</a></span>
+    </div>
