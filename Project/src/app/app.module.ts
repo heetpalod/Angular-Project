@@ -7,16 +7,19 @@ import { HomeComponent } from './component/Home/home.component';
 import { LoginComponent } from './component/Login/login.component';
 import { PostAdComponent } from './component/Advertisement/postAd.component';
 import { SignupComponent } from './component/Signup/signup.component';
+import { EditAdComponent } from './component/Advertisement/editAd.component';
 import { RouterModule } from '@angular/router';
-import { advertiseService } from "./services/Advertise/postAd.service";
 import { Http, Response, RequestOptions, Headers } from '@angular/http';
 
 @NgModule({
-  imports: [BrowserModule, HttpModule, FormsModule, RouterModule.forRoot([ {path: '', component: HomeComponent}, {path: 'post', component: PostAdComponent} ])
+  imports: [BrowserModule, HttpModule, FormsModule, RouterModule.forRoot([
+    { path: '', component: HomeComponent },
+    { path: 'postad', component: PostAdComponent },
+    { path: 'editAd/:id', component: EditAdComponent }
+  ])
 ],
-  declarations: [AppComponent, HomeComponent, LoginComponent, PostAdComponent, SignupComponent],
+  declarations: [AppComponent, HomeComponent, LoginComponent, PostAdComponent, SignupComponent, EditAdComponent],
   bootstrap: [AppComponent],
-  providers: [advertiseService]
 })
 
 export class AppModule { }

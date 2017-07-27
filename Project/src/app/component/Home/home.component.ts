@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-//import { advertiseService } from '../../services/Advertise/postAd.service';
+import { UserService } from '../../services/userService/user.service';
+import { OnChanges, Input, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'my-home',
@@ -11,20 +12,13 @@ import { Router } from '@angular/router';
 export class HomeComponent  { 
     name = 'Angular'; 
 
-// Category: any[] = [];
-
-
-  
-//   constructor( private advService: advertiseService) {
-//     advService.getCategories().subscribe((data) => {
-//       this.Category = data.data.itemList;
-//     });
-//   }
-
-  
+ constructor(private router: Router, private userservice:UserService) { 
+    }     
+   onClick(path:any) { 
+         this.router.navigate([path]);          
+         console.log(this.userservice.authToken)
+   }
 }
 
 
 
-
-    

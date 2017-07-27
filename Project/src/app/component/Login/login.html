@@ -1,34 +1,38 @@
+    <form #loginForm="ngForm"  novalidate class="modal-content animate">
+        <div class="imgcontainer">
+        <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+            <a> 
+            <img src="./img/user.jpg" alt="Avatar" class="avatar" height="100" width="100">
+            </a>
+        </div>
+        
+        <div class="form-group">
+        <label for="usrname" style="padding-left:40px"> Username: </label>
+        <input type="text" name="userName" #userNameRef #userNameModelRef="ngModel" class="form-control" required minlength="5" ngModel placeholder="Enter username">
+            <div *ngIf="userNameModelRef.errors && userNameModelRef.touched" class="alert alert-danger">
+                <div [hidden]="!userNameModelRef.errors.required">Please enter your Username</div>
+                <div [hidden]="!userNameModelRef.errors.minlength"> Name length should be minimum 5 characters </div>
+            </div>
+        </div>
+        
+        <div class="form-group">
+        <label  for="psw" style="padding-left:40px"> Password: </label>
+        <input type="password" name="password" #passwordRef #passwordModelRef="ngModel" class="form-control" required ngModel  placeholder="Enter password">
+            <div *ngIf="passwordModelRef.errors && passwordModelRef.touched" class="alert alert-danger">
+                <div [hidden]="!passwordModelRef.errors.required">Please enter your password</div>
+            </div>
+        </div>
 
-    <div class="imgcontainer">
-      <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-      <a> 
-      <img src="./img/user.jpg" alt="Avatar" class="avatar" height="100" width="100">
-      </a>
-    </div>
-
-    
-    <div class="container">
-      <label><b>Username: </b></label>
-      <input type="text" name="usernamelogin" required minlength="3" maxlength="15" class="form-control" placeholder="Username" #usernameloginModelRef="ngModel" ngModel><br>
-          <div *ngIf="usernameloginModelRef.errors && usernameloginModelRef.touched" class="alert alert-danger">
-                <div [hidden]="!usernameloginModelRef.errors.required" >Please enter Username </div>
-                <div [hidden]="!usernameloginModelRef.errors.minlength"> Username length should be minimum 3 
-                characters </div>
-                <div [hidden]="!usernameloginModelRef.errors.maxlength"> Username length should be maximum 15
-                    characters </div>
-          </div>
-      <label><b>Password: </b></label>
-      <input type="password" name="password" required placeholder="Enter Password" class="form-control"  required #passwordModelRef="ngModel" ngModel><br>
-                  <div *ngIf="passwordModelRef.errors && usernameModelRef.touched" class="alert alert-danger">
-                    <div [hidden]="!passwordModelRef.errors.required" >Please enter Password </div>
-                  </div>
-
-      <button type="submit" [disabled]="!loginForm.valid">Login</button><br>
-
-      <input type="checkbox" checked="checked" style="margin-left: 80px;"> Remember me
-    </div>
-
-    <div style="background-color:#f1f1f1">
-      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-      <span class="psw"><a href="#">Forgot password?</a></span>
-    </div>
+        <div class="checkbox">
+        <label style="padding-left:70px"><input type="checkbox" value="" checked>Remember me</label>
+        </div>
+        
+        <button style="margin-left:60px" type="button" [disabled]="!loginForm.form.valid" (click)='onLogin(loginForm.value)' data-dismiss="modal" class="btn btn-block-half btn-left">
+         Login 
+        </button>
+        
+        <div style="background-color:#f1f1f1">
+        <button style="padding-left:40px" type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+        <span style="padding-left:40px" class="psw"><a href="#">Forgot password?</a></span>
+        </div>
+    </form>

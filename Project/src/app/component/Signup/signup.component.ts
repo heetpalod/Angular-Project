@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { UserService } from '../../services/userService/user.service';
 
 @Component({
   selector: 'my-signup',
@@ -7,4 +9,11 @@ import { Component } from '@angular/core';
 })
 export class SignupComponent  { 
     name = 'Angular'; 
+
+constructor(private router: Router, private userservice:UserService) { 
+    }     
+     onSignup(value:Object){
+        this.userservice.register(value);
+    }
+
 }

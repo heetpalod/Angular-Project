@@ -1,5 +1,6 @@
+
 <div class="container">
-     <span onclick="document.getElementById('id03').style.display='none'" class="close" title="Close Modal">&times;</span>
+    
     <h1 style="text-align: center; background-color: #888888;">Post Advertisement</h1>
     <div class="bs-example">
         <form #productForm="ngForm" (ngSubmit)="onSubmit(productForm.value)" novalidate>
@@ -34,13 +35,12 @@
             <div class="form-group">
                 <label for="text" class="control-label col-xs-2">Category:</label>
                 <div class="col-xs-10">
-                    <select name="Category" required style="padding-top:10px" class="form-control" #CategoryModelRef="ngModel" ngModel><br>
+                    <select name="category" required style="padding-top:10px" class="form-control" #CategoryModelRef="ngModel" ngModel><br>
                         
-                        <option value="select">--select--</option>
-                        <option value="Cloths">Cloths</option>
-                        <option value="Furniture">Furniture</option>
-                        <option value="Mobile">Mobile</option>
-                        <option value="Real Estate">Real Estate</option>
+                        <option *ngFor="let option of options" [value]="option.name">
+                            {{option.name}}
+                        </option>
+
                     <div *ngIf="CategoryModelRef.errors && CategoryModelRef.touched" class="alert alert-danger">
                     <div [hidden]="!CategoryModelRef.errors.required" >Please enter your Name </div>
                     </div>
@@ -51,7 +51,7 @@
             <div class="form-group">
                 <label for="text" class="control-label col-xs-2">Product Description:</label>
                 <div class="col-xs-10">
-                    <textarea input type="text" name="desc" required minlength="10" maxlength="100" class="form-control" rows="5" id="comment"  #descModelRef="ngModel" ngModel></textarea>
+                    <textarea input type="text" name="description" required minlength="10" maxlength="100" class="form-control" rows="5" placeholder="Please enter Product Description..." id="comment"  #descModelRef="ngModel" ngModel></textarea>
                     <div *ngIf="descModelRef.errors && descModelRef.touched" class="alert alert-danger">
                     <div [hidden]="!descModelRef.errors.required" >Please enter description of Product </div>
                     <div [hidden]="!descModelRef.errors.minlength">Description length should be minimum 10 
@@ -64,11 +64,34 @@
 
             <div class="form-group">
                 <div class="col-xs-offset-2 col-xs-10"><br>
-                    <button [disabled]="!productForm.form.valid" type="submit" class="btn btn-primary" style="background-color: #333">Submit</button>
+                    <button [disabled]="!productForm.form.valid" type="submit" class="btn btn-primary" style="background-color: #333; width:80%; margin-left:50px">Submit</button>
                 </div>
             </div>
 
 
         </form>
+    </div>
+    
+    <div class="col-md-12">
+        <h1 style="text-align:center; color:#333;background-color:#888888; margin-right:100px">My Ads</h1><hr>
+            <table border="2px solid black" style="margin-left:240px; margin-bottom:50px">
+            <tbody>
+                <tr>
+                    <th style="text-align:center;padding:20px">Name</th>
+                    <th style="text-align:center;padding:20px">Category</th>
+                    <th style="text-align:center;padding:20px">Title</th>
+                    <th style="text-align:center;padding:20px">Description</th>
+                    <th style="text-align:center;padding:20px">Actions</th>
+                </tr>
+                <tr *ngFor="let advertisement of advertisements ">
+                    <td style="padding:20px">{{advertisement.name}}</td>
+                    <td style="padding:20px">{{advertisement.category}}</td>
+                    <td style="padding:20px">{{advertisement.title}}</td>
+                    <td style="padding:20px">{{advertisement.description}}</td>
+                    <td style="padding:20px"><button (click)="deleteObject(advertisement.id)">Delete</button>
+                    <button (click)="editObject(advertisement.id)">Edit</button></td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </div>
